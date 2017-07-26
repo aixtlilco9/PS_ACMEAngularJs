@@ -4,28 +4,43 @@
     <meta charset="UTF-8">
     <title>Acme Product Management</title>
 
+    <!-- Style sheets-->
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/app.css" rel="stylesheet"/>
+
     <!-- Library scripts-->
     <script src="js/angular.min.js"></script>
+
     <!-- Application Script -->
     <script src="app/app.js"></script>
+
     <!-- Product Controllers -->
     <script src="app/products/productListCtrl.js"></script>
 </head>
 <body ng-app="productManagement">
-    <table ng-controller="ProductListCtrl as vm">
-        <thead>
+
+<div class="panel panel-primary">
+    <div class="panel-heading"
+         style="font-size: large">Product List
+    </div>
+
+    <div class="panel-body">
+        <table class="table" ng-controller="ProductListCtrl as vm">
+            <thead>
             <tr>
-                <td><button type="button" ng-click="vm.toggleImage()">
+                <td><button type="button"
+                            class="btn btn-primary"
+                            ng-click="vm.toggleImage()">
                     {{vm.showImage ? "Hide" : "Show"}} Image
                 </button>
-"</td>
+                    </td>
                 <td>Products</td>
                 <td>Code</td>
                 <td>Available</td>
                 <td>Prices</td>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr ng-repeat="product in vm.products">
                 <td>
                     <!--ng-show/hide/if/click  all expect expressions therefore dnt require curly braces -->
@@ -39,8 +54,11 @@
                 <td>{{product.releaseDate}}</td>
                 <td>{{product.price | currency}}</td>
             </tr>
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
+    </div>
+</div>
+
 </body>
 </html>
