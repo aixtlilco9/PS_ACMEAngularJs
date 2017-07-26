@@ -10,9 +10,14 @@
 
     <!-- Library scripts-->
     <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
 
     <!-- Application Script -->
     <script src="app/app.js"></script>
+
+    <!-- Service Script -->
+    <script src="common/services/common.services.js"></script>
+    <script src="common/services/productResource.js"></script>
 
     <!-- Product Controllers -->
     <script src="app/products/productListCtrl.js"></script>
@@ -26,7 +31,7 @@
 
     <div class="panel-body">
         <table class="table" ng-controller="ProductListCtrl as vm">
-            <thead>
+            <thead><!--ng-app derective is to define identify main module  -->
             <tr>
                 <td><button type="button"
                             class="btn btn-primary"
