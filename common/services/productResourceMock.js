@@ -70,6 +70,51 @@
 
             var productUrl = "/api/products"
             $httpBackend.whenGET(productUrl).respond(products);
-        }
-    )
+
+            //below it is unclear to me why there are 3 parameters in function
+            //continue looking into this link https://docs.angularjs.org/api/ngMock/service/$httpBackend
+
+            var editingRegEx = new RegExp(productUrl + "/[0-9][0-9]*", '');
+
+            $httpBackend.whenGET(editingRegEx).respond(function(method, url, data){
+            var product = {"productId": 0};
+            var parameters = url.split('/');
+            var length = parameters.length;
+            var id = parameters[length -1];
+
+            if (id > 0){
+                for (var i = 0; i < products.length; i++){
+                    if(products[i].productId == id){
+                        product = products[i];
+                        break;
+                    }
+                };
+            }
+            return [200, product, {}];
+            });
+
+            $httpBackend.whenPOST(productUrl).respond(function(method, url, data){
+                var product = angular.fromJson(data);
+
+                if (!product.productId){
+                  //new product Id
+                  product.productId = products[product.length -1].productId + 1;
+                  products.push(product);
+                }
+                else {
+                    //update existing product
+                    for (var i = 0; i < products.length; i++){
+                        if(products[i].productId == product.productId){
+                            products[i] = product;
+                            break;
+                        }
+                    };
+                }
+                return [200, product, {}];
+            });
+
+            //-------------
+            //pass through any request for application files
+            $httpBackend.whenGET(/app/).passThrough();
+        })
     }());
