@@ -10,6 +10,6 @@
 
         function productResource($resource){
             return $resource("/api/products/:productId")
-        };
+        }
     }
-);
+    ());

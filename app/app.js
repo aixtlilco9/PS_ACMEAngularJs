@@ -3,5 +3,5 @@
 //IIFE:immediately invoked function expression js pattern that helps prevent global declarations also called self executing anonymus function.
 (function(){
     "use strict";
-var app = angular.module("productManagement", ["common.services"]);
+var app = angular.module("productManagement", ["common.services", "productResourceMock"]);
 }());
