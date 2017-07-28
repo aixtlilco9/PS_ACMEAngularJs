@@ -12,6 +12,7 @@
     <script src="js/angular.min.js"></script>
     <script src="js/angular-resource.js"></script>
     <script src="js/angular-mocks.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
 
     <!-- Application Script -->
     <script src="app/app.js"></script>
@@ -25,47 +26,11 @@
     <script src="app/products/productListCtrl.js"></script>
 </head>
 <body ng-app="productManagement">
-
-<div class="panel panel-primary">
-    <div class="panel-heading"
-         style="font-size: large">Product List
+<!--if ui view were marked as an or any other custom attribute add data- infront-->
+    <div class="container">
+        <div ui-view></div>
     </div>
 
-    <div class="panel-body">
-        <table class="table" ng-controller="ProductListCtrl as vm">
-            <thead><!--ng-app derective is to define identify main module  -->
-            <tr>
-                <td><button type="button"
-                            class="btn btn-primary"
-                            ng-click="vm.toggleImage()">
-                    {{vm.showImage ? "Hide" : "Show"}} Image
-                </button>
-                    </td>
-                <td>Products</td>
-                <td>Code</td>
-                <td>Available</td>
-                <td>Prices</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="product in vm.products">
-                <td>
-                    <!--ng-show/hide/if/click  all expect expressions therefore dnt require curly braces -->
-                    <img ng-if="vm.showImage"
-                         ng-src="{{product.imageUrl}}"
-                         style="width: 50px;margin: 2px"
-                         title="{{product.productName}}">
-                </td>
-                <td>{{product.productName}}</td>
-                <td>{{product.productCode}}</td>
-                <td>{{product.releaseDate}}</td>
-                <td>{{product.price | currency}}</td>
-            </tr>
-            </tbody>
-
-        </table>
-    </div>
-</div>
 
 </body>
 </html>
