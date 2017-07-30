@@ -2,7 +2,7 @@
     function(){
         "use strict";
         var app = angular
-            .module("productResourceMock",["ngMockE2E"]);
+            .module("productResourceMock",['ngMockE2E']);
 
         app.run(function($httpBackend){
             var products = [

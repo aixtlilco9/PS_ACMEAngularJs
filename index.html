@@ -9,10 +9,13 @@
     <link href="css/app.css" rel="stylesheet"/>
 
     <!-- Library scripts-->
+
+    <script src="js/jquery.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/angular-resource.js"></script>
     <script src="js/angular-mocks.js"></script>
     <script src="js/angular-ui-router.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 
     <!-- Application Script -->
     <script src="app/app.js"></script>
@@ -26,9 +29,35 @@
     <script src="app/products/productListCtrl.js"></script>
 </head>
 <body ng-app="productManagement">
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <a class="navbar-brand"
+           ui-sref="home">Acme Product Management</a>
+        <div class="navbar-header">
+            <button type="button"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="productList">Product List</a></li>
+                <li><a ui-sref="productEdit({productId:0})">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Add Product</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <!--if ui view were marked as an or any other custom attribute add data- infront-->
     <div class="container">
-        <div ui-view></div>
+        <div data-ui-view></div>
     </div>
 
 
