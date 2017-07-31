@@ -24,18 +24,45 @@ app.config(
         //Edit page
 
             .state("productEdit",{
+                //abstract is used so this state cannnot be called explicitly, will trow an attemt is so and will only activate implicitly when a child state is activated
+                abstract: true,
                 url:"/products/edit/:productId",
                 templateUrl:"app/products/productEditView.html",
-                controller: "ProductEditCtrl as vm"
-            })
+                controller: "ProductEditCtrl as vm",
+                resolve: {
+                    //resolved is used to retrieve data for state ensuring associated view is not displayed until the data is retrieved and ready
+                    productResource: "productResource",
+                    //product and productresource are key value pairs and can be nmed anything
+                    product: function(productResource, $stateParams){
+                        var productId = $stateParams.productId;
+                        return productResource.get({productId: productId}).$promise;
+                    }
+                }
+        })
+
+            .state("productEdit.info",{
+            url:"/info",
+            templateUrl:"app/products/productEditInfoView.html",
+        })
+
+            .state("productEdit.price",{
+            url:"/price",
+            templateUrl:"app/products/productEditPriceView.html",
+        })
+
+            .state("productEdit.tags",{
+            url:"/tags",
+            templateUrl:"app/products/productEditTagsView.html",
+        })
 
             .state("productDetail",{
                 url:"/products/:productId",
                 templateUrl:"app/products/productDetailView.html",
                 controller: "ProductDetailCtrl as vm",
                 resolve: {
+                    //resolved is used to retrieve data for state ensuring associated view is not displayed until the data is retrieved and ready
                     productResource: "productResource",
-
+                    //product and productresource are key value pairs and can be nmed anything
                     product: function(productResource, $stateParams){
                         var productId = $stateParams.productId;
                         return productResource.get({productId: productId}).$promise;
