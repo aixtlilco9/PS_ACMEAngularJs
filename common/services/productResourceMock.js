@@ -80,7 +80,7 @@
             var product = {"productId": 0};
             var parameters = url.split('/');
             var length = parameters.length;
-            var id = parameters[length -1];
+            var id = parameters[length - 1];
 
             if (id > 0){
                 for (var i = 0; i < products.length; i++){
@@ -98,7 +98,7 @@
 
                 if (!product.productId){
                   //new product Id
-                  product.productId = products[product.length -1].productId + 1;
+                  product.productId = products[products.length - 1].productId + 1;
                   products.push(product);
                 }
                 else {
