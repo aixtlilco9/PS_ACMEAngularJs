@@ -1,1 +1,22 @@
-<div>Basic Product Information</div>
+<form name="productForm">
+    <fieldset>
+        <legend>Basic Product Information</legend>
+
+
+            <label for="inputProductName">Product Name</label>
+            <input id="inputProductName"
+                   type="text"
+                   placeholder="Product Name"
+                   ng-model="vm.product.productName"/>
+
+        </div>
+
+        <div>
+            <label for="inputDescription">Description</label>
+        <textarea id="inputDescription"
+                  placeholder="Description"
+                  rows="3"
+                  ng-model="vm.product.description"/>
+        </div>
+    </fieldset>
+</form>
