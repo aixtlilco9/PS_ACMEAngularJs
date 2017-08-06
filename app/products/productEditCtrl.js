@@ -16,9 +16,9 @@
         }
 
         vm.open = function($event){
-
             $event.preventDefault();
             $event.stopPropagation();
+
             vm.opened = !vm.opened;
         };
 
@@ -27,6 +27,7 @@
         };
 
         vm.cancel = function () {
+            //can use $state.go to naviagete to another state
             $state.go('productList');
         };
     }

@@ -29,10 +29,11 @@
                    for="inputAvailabilityDate">Availability</label>
         <div class="col-md-4">
             <div class="input-group">
+                <!--TODO: find a way use the newer version of ui.bootstrap for the date picker-->
                 <input class="form-control"
                         id="inputAvailabilityDate"
                         type="text"
-                       datepicker-popup="MMM dd, yyyy"
+                        datepicker-popup="MMM dd, yyyy"
                        is-open="vm.opened"
                        ng-model="vm.product.releaseDate"
                       />
@@ -75,6 +76,5 @@
                 </span>
             </div>
         </div>
-
     </fieldset>
 </form>
