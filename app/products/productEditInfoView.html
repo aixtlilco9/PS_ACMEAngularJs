@@ -13,12 +13,23 @@
                        type="text"
                        placeholder="Product Name (required)"
                        ng-model="vm.product.productName"
-                        required/>
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="12"/>
             </div>
 
-            <span class="help-block has-error"
-                  ng-show="productForm.inputProductName.$invalid">
-                product name is required
+            <span class="help-block has-error">
+                  <span ng-show="productForm.inputProductName.$error.required">
+                      product name is required
+                  </span>
+
+                <span ng-show="productForm.inputProductName.$error.minlength">
+                      product name must be at least 4 characters in length
+                  </span>
+
+                <span ng-show="productForm.inputProductName.$error.maxlength">
+                      product name cannot exceed 12 characters in length
+                  </span>
             </span>
         </div>
 
