@@ -9,7 +9,7 @@
             var margin = 0;
             if(price && cost)
             {
-                margin = (100* (price-cost)) / price;
+                margin = (100 * (price - cost)) / price;
             }
             margin = Math.round(margin);
             return margin;
