@@ -20,6 +20,9 @@
     <script src="js/ui-utils.js"></script>
     <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
     <script src="js/toastr.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/angular-charts.min.js"></script>
+
 
     <!-- Application Script -->
     <script src="app/app.js"></script>
@@ -54,10 +57,14 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a ui-sref="productList">Product List</a></li>
+
                 <li><a ui-sref="productEdit.info
                 ({productId:0})">
                     <i class="glyphicon glyphicon-plus"></i>
-                    Add Product</a></li>
+                    Add Product</a>
+                </li>
+
+                <li><a ui-sref="priceAnalytics">Price Analytics</a></li>
             </ul>
         </div>
     </div>

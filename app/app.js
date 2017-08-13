@@ -3,7 +3,12 @@
 //IIFE:immediately invoked function expression js pattern that helps prevent global declarations also called self executing anonymus function.
 (function(){
     "use strict";
-var app = angular.module("productManagement", ['common.services', 'ui.router','ui.mask','ui.bootstrap', 'productResourceMock']);
+var app = angular.module("productManagement", ['common.services',
+                                                'ui.router',
+                                                'ui.mask',
+                                                'ui.bootstrap',
+                                                'angularCharts',
+                                                'productResourceMock']);
 
 app.config(
     ["$stateProvider","$urlRouterProvider",
@@ -70,6 +75,20 @@ app.config(
                 }
 
             })
+            .state("priceAnalytics",{
+                url:"/priceAnalytics",
+                templateUrl:"app/prices/priceAnalyticsView.html",
+                controller:"PriceAnalyticsCtrl",
+                //resolve object ensure all data is loaded before bringing in page
+                resolve: {
+                    productResource: "productResource",
+                    product: function(productResource){
+                        //do not need a parameter since we will retireve all product data and using query to get product in an array
+                        return productResource.query().$promise;
+                    }
+                }
+            })
+
     }]
 );
 }());
