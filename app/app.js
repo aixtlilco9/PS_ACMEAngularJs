@@ -75,15 +75,16 @@ app.config(
                 }
 
             })
+            //resolve object ensure all data is loaded before bringing in page
+            //do not need a parameter since we will retireve all product data and using query to get product in an array
+
             .state("priceAnalytics",{
                 url:"/priceAnalytics",
                 templateUrl:"app/prices/priceAnalyticsView.html",
                 controller:"PriceAnalyticsCtrl",
-                //resolve object ensure all data is loaded before bringing in page
                 resolve: {
                     productResource: "productResource",
-                    product: function(productResource){
-                        //do not need a parameter since we will retireve all product data and using query to get product in an array
+                    products: function(productResource){
                         return productResource.query().$promise;
                     }
                 }
